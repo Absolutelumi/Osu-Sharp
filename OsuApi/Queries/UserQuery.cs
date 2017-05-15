@@ -40,16 +40,20 @@ namespace OsuApi.Queries
             return Api.Json.Deserialize<User[]>(responseJson).First();
         }
 
-        public IUserQuery WithUser(string user, UserCredentialType type = UserCredentialType.Auto)
-        {
-            Parameters["u"] = user;
-            return this;
-        }
-
         public IUserQuery WithMode(Mode mode)
         {
             Parameters["m"] = $"{(int)mode}"; ;
-            return this; 
+            return this;
+        }
+
+        public IUserQuery WithUser(string user, UserCredentialType type = UserCredentialType.Auto)
+        {
+            Parameters["u"] = user;
+            if (type != UserCredentialType.Auto)
+            {
+                Parameters["type"] = type == UserCredentialType.Username ? "string" : "id";
+            }
+            return this;
         }
     }
 }
