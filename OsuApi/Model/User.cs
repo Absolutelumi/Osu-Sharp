@@ -2,44 +2,44 @@
 {
     public class User
     {
-        public string UserID { get { return user_id; } }
-        public string Username { get { return username; } }
-        public int Count300 { get { return count300; } }
-        public int Count100 { get { return count100; } }
-        public int Count50 { get { return count50; } }
-        public int Playcount { get { return playcount; } }
-        public long RankedScore { get { return ranked_score; } }
-        public long TotalScore { get { return total_score; } }
-        public int Rank { get { return pp_rank; } }
-        public double Level { get { return level; } }
-        public double PPRaw { get { return pp_raw; } }
         public double Accuracy { get { return accuracy; } }
-        public int SSCount { get { return count_rank_ss; } }
-        public int SCount { get { return count_rank_s; } }
-        public int ACount { get { return count_rank_a; } }
         public string Country { get { return country; } }
         public int CountryRank { get { return pp_country_rank; } }
+        public double Level { get { return level; } }
+        public int PlayCount { get { return playcount; } }
+        public int Rank { get { return pp_rank; } }
+        public long RankedScore { get { return ranked_score; } }
+        public double RawPP { get { return pp_raw; } }
+        public int Total100s { get { return count100; } }
+        public int Total300s { get { return count300; } }
+        public int Total50s { get { return count50; } }
+        public int TotalAs { get { return count_rank_a; } }
+        public long TotalScore { get { return total_score; } }
+        public int TotalSs { get { return count_rank_s; } }
+        public int TotalSSs { get { return count_rank_ss; } }
+        public string UserID { get { return user_id; } }
+        public string Username { get { return username; } }
 
         #region Json Fields
 
-        public string user_id;
-        public string username;
-        public int count300;
+        public double accuracy;
+        public int count_rank_a;
+        public int count_rank_s;
+        public int count_rank_ss;
         public int count100;
+        public int count300;
         public int count50;
+        public string country;
+        public double level;
         public int playcount;
+        public int pp_country_rank;
+        public int pp_rank;
+        public double pp_raw;
         public long ranked_score;
         public long total_score;
-        public int pp_rank;
-        public double level;
-        public double pp_raw;
-        public double accuracy;
-        public int count_rank_ss;
-        public int count_rank_s;
-        public int count_rank_a;
-        public string country;
-        public int pp_country_rank; 
+        public string user_id;
+        public string username;
 
-        #endregion
+        #endregion Json Fields
     }
 }
