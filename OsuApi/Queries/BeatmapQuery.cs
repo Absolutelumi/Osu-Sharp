@@ -55,6 +55,8 @@ namespace OsuApi.Queries
 
         public async Task<Beatmap[]> Results(int limit)
         {
+            if (limit < 1)
+                throw new ArgumentOutOfRangeException("Limit must be greater than 0");
             Parameters["limit"] = $"{limit}";
             var jsonResponse = await GetJsonResponse("get_beatmaps");
             return jsonResponse.Deserialize<Beatmap[]>();
