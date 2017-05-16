@@ -1,4 +1,6 @@
-﻿namespace OsuApi.Model
+﻿using System;
+
+namespace OsuApi.Model
 {
     public enum Genre
     {
@@ -36,6 +38,46 @@
         Taiko = 1,
         CatchTheBeat = 2,
         Mania = 3
+    }
+
+    [Flags]
+    public enum Mods
+    {
+        None = 0,
+        NoFail = 1 << 0,
+        Easy = 1 << 1,
+        NoVideo = 1 << 2,
+        Hidden = 1 << 3,
+        HardRock = 1 << 4,
+        SuddenDeath = 1 << 5,
+        DoubleTime = 1 << 6,
+        Relax = 1 << 7,
+        HalfTime = 1 << 8,
+        Nightcore = 1 << 9,
+        Flashlight = 1 << 10,
+        Autoplay = 1 << 11,
+        SpunOut = 1 << 12,
+        AutoPilot = 1 << 13,
+        Perfect = 1 << 14,
+        Key4 = 1 << 15,
+        Key5 = 1 << 16,
+        Key6 = 1 << 17,
+        Key7 = 1 << 18,
+        Key8 = 1 << 19,
+        FadeIn = 1 << 20,
+        Random = 1 << 21
+    }
+
+    public enum Rank
+    {
+        D,
+        C,
+        B,
+        A,
+        S,
+        SH,
+        SS,
+        SX
     }
 
     public enum Status

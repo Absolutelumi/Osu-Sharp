@@ -1,9 +1,5 @@
 ﻿using OsuApi.Model;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace OsuApi.Queries
@@ -12,9 +8,9 @@ namespace OsuApi.Queries
     {
         IBeatmapQuery AllowConvertedBeatmaps(bool allow);
 
-        IBeatmapQuery CreatedBy(string user);
+        IBeatmapQuery CreatedBy(string user, UserCredentialType type = UserCredentialType.Auto);
 
-        Task<Beatmap[]> GetBeatmaps(int? limit = 500);
+        Task<Beatmap[]> Results(int limit = 500);
 
         IBeatmapQuery Since(DateTime date);
 
@@ -35,16 +31,10 @@ namespace OsuApi.Queries
         IBeatmapQuery WithId(string id);
     }
 
-    internal class BeatmapQuery : IBeatmapQuery, IBeatmapSetQuery, IBeatmapSpecificQuery
+    internal class BeatmapQuery : Query, IBeatmapQuery, IBeatmapSetQuery, IBeatmapSpecificQuery
     {
-        private Dictionary<string, string> Parameters;
-
-        internal BeatmapQuery(string apiKey)
+        internal BeatmapQuery(string apiKey) : base(apiKey)
         {
-            Parameters = new Dictionary<string, string>
-            {
-                { "k", apiKey }
-            };
         }
 
         public IBeatmapQuery AllowConvertedBeatmaps(bool allow)
@@ -53,23 +43,21 @@ namespace OsuApi.Queries
             return this;
         }
 
-        public IBeatmapQuery CreatedBy(string user)
+        public IBeatmapQuery CreatedBy(string user, UserCredentialType type)
         {
             Parameters["u"] = user;
+            if (type != UserCredentialType.Auto)
+            {
+                Parameters["type"] = type == UserCredentialType.Username ? "string" : "id";
+            }
             return this;
         }
 
-        public async Task<Beatmap[]> GetBeatmaps(int? limit)
+        public async Task<Beatmap[]> Results(int limit)
         {
-            if (limit.HasValue)
-            {
-                Parameters["limit"] = $"{limit}";
-            }
-            var queryString = string.Join("&", Parameters.Select(pair => $"{pair.Key}={pair.Value}"));
-            var beatmapRequest = WebRequest.CreateHttp($"https://osu.ppy.sh/api/get_beatmaps?{queryString}");
-            var response = await beatmapRequest.GetResponseAsync();
-            string responseJson = new StreamReader(response.GetResponseStream()).ReadToEnd();
-            return Api.Json.Deserialize<Beatmap[]>(responseJson);
+            Parameters["limit"] = $"{limit}";
+            var jsonResponse = await GetJsonResponse("get_beatmaps");
+            return jsonResponse.Deserialize<Beatmap[]>();
         }
 
         public IBeatmapQuery Since(DateTime date)

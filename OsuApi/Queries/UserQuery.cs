@@ -1,15 +1,12 @@
 ﻿using OsuApi.Model;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace OsuApi.Queries
 {
     public interface IUserQuery
     {
-        Task<User> GetUser();
+        Task<User> Result();
 
         IUserQuery WithMode(Mode mode);
     }
@@ -19,25 +16,16 @@ namespace OsuApi.Queries
         IUserQuery WithUser(string user, UserCredentialType type = UserCredentialType.Auto);
     }
 
-    internal class UserQuery : IUserQuery, IUserSpecificQuery
+    internal class UserQuery : Query, IUserQuery, IUserSpecificQuery
     {
-        private Dictionary<string, string> Parameters;
-
-        internal UserQuery(string apiKey)
+        internal UserQuery(string apiKey) : base(apiKey)
         {
-            Parameters = new Dictionary<string, string>
-            {
-                { "k", apiKey }
-            };
         }
 
-        public async Task<User> GetUser()
+        public async Task<User> Result()
         {
-            var queryString = string.Join("&", Parameters.Select(pair => $"{pair.Key}={pair.Value}"));
-            var userRequest = WebRequest.CreateHttp($"https://osu.ppy.sh/api/get_user?{queryString}");
-            var response = await userRequest.GetResponseAsync();
-            string responseJson = new StreamReader(response.GetResponseStream()).ReadToEnd();
-            return Api.Json.Deserialize<User[]>(responseJson).First();
+            var jsonResponse = await GetJsonResponse("get_user");
+            return jsonResponse.Deserialize<User[]>().FirstOrDefault();
         }
 
         public IUserQuery WithMode(Mode mode)

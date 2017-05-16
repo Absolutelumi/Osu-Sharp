@@ -1,44 +1,84 @@
-﻿namespace OsuApi.Model
+﻿using System.Runtime.Serialization;
+
+namespace OsuApi.Model
 {
+    [DataContract]
     public class User
     {
-        public double Accuracy { get { return accuracy; } }
-        public string Country { get { return country; } }
-        public int CountryRank { get { return pp_country_rank; } }
-        public double Level { get { return level; } }
-        public int PlayCount { get { return playcount; } }
-        public int Rank { get { return pp_rank; } }
-        public long RankedScore { get { return ranked_score; } }
-        public double RawPP { get { return pp_raw; } }
-        public int Total100s { get { return count100; } }
-        public int Total300s { get { return count300; } }
-        public int Total50s { get { return count50; } }
-        public int TotalAs { get { return count_rank_a; } }
-        public long TotalScore { get { return total_score; } }
-        public int TotalSs { get { return count_rank_s; } }
-        public int TotalSSs { get { return count_rank_ss; } }
-        public string UserID { get { return user_id; } }
-        public string Username { get { return username; } }
+        public double Accuracy => accuracy;
+        public string Country => country;
+        public int CountryRank => pp_country_rank;
+        public double Level => level;
+        public int PlayCount => playcount;
+        public double PP => pp_raw;
+        public int Rank => pp_rank;
+        public long RankedScore => ranked_score;
+        public int Total100s => count100;
+        public int Total300s => count300;
+        public int Total50s => count50;
+        public int TotalAs => count_rank_a;
+        public long TotalScore => total_score;
+        public int TotalSs => count_rank_s;
+        public int TotalSSs => count_rank_ss;
+        public string UserID => user_id;
+        public string Username => username;
 
         #region Json Fields
 
-        public double accuracy;
-        public int count_rank_a;
-        public int count_rank_s;
-        public int count_rank_ss;
-        public int count100;
-        public int count300;
-        public int count50;
-        public string country;
-        public double level;
-        public int playcount;
-        public int pp_country_rank;
-        public int pp_rank;
-        public double pp_raw;
-        public long ranked_score;
-        public long total_score;
-        public string user_id;
-        public string username;
+#pragma warning disable 0649
+
+        [DataMember]
+        private double accuracy;
+
+        [DataMember]
+        private int count_rank_a;
+
+        [DataMember]
+        private int count_rank_s;
+
+        [DataMember]
+        private int count_rank_ss;
+
+        [DataMember]
+        private int count100;
+
+        [DataMember]
+        private int count300;
+
+        [DataMember]
+        private int count50;
+
+        [DataMember]
+        private string country;
+
+        [DataMember]
+        private double level;
+
+        [DataMember]
+        private int playcount;
+
+        [DataMember]
+        private int pp_country_rank;
+
+        [DataMember]
+        private int pp_rank;
+
+        [DataMember]
+        private double pp_raw;
+
+        [DataMember]
+        private long ranked_score;
+
+        [DataMember]
+        private long total_score;
+
+        [DataMember]
+        private string user_id;
+
+        [DataMember]
+        private string username;
+
+#pragma warning restore 0649
 
         #endregion Json Fields
     }
