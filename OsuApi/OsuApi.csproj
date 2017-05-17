@@ -50,6 +50,7 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\BeatmapQuery.cs" />
+    <Compile Include="Queries\BestPlayQuery.cs" />
     <Compile Include="Queries\Query.cs" />
     <Compile Include="Queries\ScoreQuery.cs" />
     <Compile Include="Queries\UserQuery.cs" />

@@ -21,55 +21,59 @@ namespace OsuApi.Model
         public long TotalScore => score;
         public string UserId => user_id;
         public string Username => username;
+        public string BeatmapId => beatmap_id;
 
         #region Json Fields
 
 #pragma warning disable 0649
 
         [DataMember]
-        private int count100;
+        internal int count100;
 
         [DataMember]
-        private int count300;
+        internal int count300;
 
         [DataMember]
-        private int count50;
+        internal int count50;
 
         [DataMember]
-        private int countgeki;
+        internal int countgeki;
 
         [DataMember]
-        private int countkatu;
+        internal int countkatu;
 
         [DataMember]
-        private int countmiss;
+        internal int countmiss;
 
         [DataMember]
-        private string date;
+        internal string date;
 
         [DataMember]
-        private int enabled_mods;
+        internal int enabled_mods;
 
         [DataMember]
-        private int maxcombo;
+        internal int maxcombo;
 
         [DataMember]
-        private int perfect;
+        internal int perfect;
 
         [DataMember]
-        private double pp;
+        internal double pp;
 
         [DataMember]
-        private string rank;
+        internal string rank;
 
         [DataMember]
-        private long score;
+        internal long score;
 
         [DataMember]
-        private string user_id;
+        internal string user_id;
 
         [DataMember]
-        private string username;
+        internal string username;
+
+        [DataMember]
+        internal string beatmap_id;
 
 #pragma warning restore 0649
 

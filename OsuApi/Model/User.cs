@@ -28,55 +28,55 @@ namespace OsuApi.Model
 #pragma warning disable 0649
 
         [DataMember]
-        private double accuracy;
+        internal double accuracy;
 
         [DataMember]
-        private int count_rank_a;
+        internal int count_rank_a;
 
         [DataMember]
-        private int count_rank_s;
+        internal int count_rank_s;
 
         [DataMember]
-        private int count_rank_ss;
+        internal int count_rank_ss;
 
         [DataMember]
-        private int count100;
+        internal int count100;
 
         [DataMember]
-        private int count300;
+        internal int count300;
 
         [DataMember]
-        private int count50;
+        internal int count50;
 
         [DataMember]
-        private string country;
+        internal string country;
 
         [DataMember]
-        private double level;
+        internal double level;
 
         [DataMember]
-        private int playcount;
+        internal int playcount;
 
         [DataMember]
-        private int pp_country_rank;
+        internal int pp_country_rank;
 
         [DataMember]
-        private int pp_rank;
+        internal int pp_rank;
 
         [DataMember]
-        private double pp_raw;
+        internal double pp_raw;
 
         [DataMember]
-        private long ranked_score;
+        internal long ranked_score;
 
         [DataMember]
-        private long total_score;
+        internal long total_score;
 
         [DataMember]
-        private string user_id;
+        internal string user_id;
 
         [DataMember]
-        private string username;
+        internal string username;
 
 #pragma warning restore 0649
 

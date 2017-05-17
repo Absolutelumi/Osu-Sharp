@@ -39,85 +39,85 @@ namespace OsuApi.Model
 #pragma warning disable 0649
 
         [DataMember]
-        private int approved;
+        internal int approved;
 
         [DataMember]
-        private string approved_date;
+        internal string approved_date;
 
         [DataMember]
-        private string artist;
+        internal string artist;
 
         [DataMember]
-        private string beatmap_id;
+        internal string beatmap_id;
 
         [DataMember]
-        private string beatmapset_id;
+        internal string beatmapset_id;
 
         [DataMember]
-        private double bpm;
+        internal double bpm;
 
         [DataMember]
-        private string creator;
+        internal string creator;
 
         [DataMember]
-        private double diff_approach;
+        internal double diff_approach;
 
         [DataMember]
-        private double diff_drain;
+        internal double diff_drain;
 
         [DataMember]
-        private double diff_overall;
+        internal double diff_overall;
 
         [DataMember]
-        private double diff_size;
+        internal double diff_size;
 
         [DataMember]
-        private double difficultyrating;
+        internal double difficultyrating;
 
         [DataMember]
-        private int favorite_count;
+        internal int favorite_count;
 
         [DataMember]
-        private string file_md5;
+        internal string file_md5;
 
         [DataMember]
-        private int genre_id;
+        internal int genre_id;
 
         [DataMember]
-        private int hit_length;
+        internal int hit_length;
 
         [DataMember]
-        private int language_id;
+        internal int language_id;
 
         [DataMember]
-        private string last_update;
+        internal string last_update;
 
         [DataMember]
-        private int max_combo;
+        internal int max_combo;
 
         [DataMember]
-        private int mode;
+        internal int mode;
 
         [DataMember]
-        private int passcount;
+        internal int passcount;
 
         [DataMember]
-        private int playcount;
+        internal int playcount;
 
         [DataMember]
-        private string source;
+        internal string source;
 
         [DataMember]
-        private string tags;
+        internal string tags;
 
         [DataMember]
-        private string title;
+        internal string title;
 
         [DataMember]
-        private int total_length;
+        internal int total_length;
 
         [DataMember]
-        private string version;
+        internal string version;
 
 #pragma warning restore 0649
 

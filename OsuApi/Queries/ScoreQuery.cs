@@ -48,7 +48,12 @@ namespace OsuApi.Queries
                 throw new ArgumentOutOfRangeException("Limit must be between 1 and 100");
             Parameters["limit"] = $"{limit}";
             var jsonResponse = await GetJsonResponse("get_scores");
-            return jsonResponse.Deserialize<Score[]>();
+            var scores = jsonResponse.Deserialize<Score[]>();
+            foreach (var score in scores)
+            {
+                score.beatmap_id = Parameters["b"];
+            }
+            return scores;
         }
 
         public IScoreQuery WithMode(Mode mode)
