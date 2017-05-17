@@ -1,11 +1,12 @@
 ﻿using OsuApi.Model;
+using System;
 using System.Threading.Tasks;
 
 namespace OsuApi.Queries
 {
     public interface IBestPlayQuery
     {
-        Task<Score> Result();
+        Task<Score[]> Result(int limit);
 
         IBestPlayQuery WithId(string user, UserCredentialType type = UserCredentialType.Auto); 
     }
@@ -16,10 +17,13 @@ namespace OsuApi.Queries
         {
         }
 
-        public async Task<Score> Result()
+        public async Task<Score[]> Result(int limit)
         {
+            if (limit < 1 || limit > 10)
+                throw new ArgumentOutOfRangeException("Limit must be greater than 0 or less or equal to 10");
+            Parameters["limit"] = $"{limit}";
             var jsonResponse = await GetJsonResponse("get_user_best");
-            return jsonResponse.Deserialize<Score>();
+            return jsonResponse.Deserialize<Score[]>();
         }
 
         public IBestPlayQuery WithId(string user, UserCredentialType type = UserCredentialType.Auto)
