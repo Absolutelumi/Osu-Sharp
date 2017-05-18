@@ -97,4 +97,27 @@ namespace OsuApi.Model
         Username,
         UserId
     }
+
+    public enum ScoringType
+    {
+        Score = 0,
+        Accuracy = 1,
+        Combo = 2,
+        ScoreV2 = 3,
+    }
+
+    public enum Team
+    {
+        None = 0,
+        Blue = 1,
+        Red = 2
+    }
+
+    public enum TeamType
+    {
+        HeadToHead = 0,
+        TagCoOp = 1,
+        TeamVs = 2,
+        TagTeamVs = 3
+    }
 }
