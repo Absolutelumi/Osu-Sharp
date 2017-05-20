@@ -59,6 +59,7 @@
     <Compile Include="Queries\Query.cs" />
     <Compile Include="Queries\ScoreQuery.cs" />
     <Compile Include="Queries\UserQuery.cs" />
+    <Compile Include="Queries\UserRecentQuery.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

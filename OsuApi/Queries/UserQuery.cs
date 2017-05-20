@@ -30,7 +30,7 @@ namespace OsuApi.Queries
 
         public IUserQuery WithMode(Mode mode)
         {
-            Parameters["m"] = $"{(int)mode}"; ;
+            Parameters["m"] = $"{(int)mode}"; 
             return this;
         }
 
@@ -38,9 +38,7 @@ namespace OsuApi.Queries
         {
             Parameters["u"] = user;
             if (type != UserCredentialType.Auto)
-            {
                 Parameters["type"] = type == UserCredentialType.Username ? "string" : "id";
-            }
             return this;
         }
     }
