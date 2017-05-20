@@ -27,6 +27,8 @@ namespace OsuApi.Queries
 
         public async Task<Score[]> GetUserRecent(int limit = 50)
         {
+            if (limit < 1 || limit > 50)
+                throw new ArgumentOutOfRangeException("Limit must be greater than 1 or equal to or less than 50");
             var jsonResponse = await GetJsonResponse("get_user_recent");
             Parameters["limit"] = $"{limit}"; 
             return jsonResponse.Deserialize<Score[]>();
