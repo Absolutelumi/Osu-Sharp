@@ -9,7 +9,7 @@ namespace OsuApi.Queries
 {
     public interface IUserRecentQuery
     {
-        Task<Score[]> GetUserRecent(int limit = 50);
+        Task<Score[]> Results(int limit = 50);
 
         IUserRecentQuery WithMode(Mode mode);
     }
@@ -25,7 +25,7 @@ namespace OsuApi.Queries
         {
         }
 
-        public async Task<Score[]> GetUserRecent(int limit = 50)
+        public async Task<Score[]> Results(int limit = 50)
         {
             if (limit < 1 || limit > 50)
                 throw new ArgumentOutOfRangeException("Limit must be greater than 1 or equal to or less than 50");
@@ -34,18 +34,18 @@ namespace OsuApi.Queries
             return jsonResponse.Deserialize<Score[]>();
         }
 
+        public IUserRecentQuery WithMode(Mode mode)
+        {
+            Parameters["m"] = $"{(int)mode}";
+            return this;
+        }
+
         public IUserRecentQuery WithUser(string user, UserCredentialType type = UserCredentialType.Auto)
         {
             Parameters["u"] = user;
             if (type != UserCredentialType.Auto)
                 Parameters["type"] = type == UserCredentialType.Username ? "string" : "id";
             return this;
-        }
-
-        public IUserRecentQuery WithMode(Mode mode)
-        {
-            Parameters["m"] = $"{(int)mode}";
-            return this; 
         }
     }
 }
