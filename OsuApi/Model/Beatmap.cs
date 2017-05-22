@@ -20,7 +20,7 @@ namespace OsuApi.Model
         public double HealthDrain => diff_drain;
         public Language Language => (Language)language_id;
         public DateTime LastUpdate => DateTime.Parse(last_update);
-        public int MaxCombo => max_combo;
+        public int MaxCombo => max_combo ?? 0;
         public string Md5Hash => file_md5;
         public Mode Mode => (Mode)mode;
         public int NumberOfFavorites => favorite_count;
@@ -93,7 +93,7 @@ namespace OsuApi.Model
         internal string last_update;
 
         [DataMember]
-        internal int max_combo;
+        internal int? max_combo;
 
         [DataMember]
         internal int mode;
