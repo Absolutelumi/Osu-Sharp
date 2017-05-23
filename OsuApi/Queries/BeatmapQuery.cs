@@ -16,8 +16,6 @@ namespace OsuApi.Queries
 
         IBeatmapQuery WithHash(string hash);
 
-        IBeatmapQuery WithId(string id);
-
         IBeatmapQuery WithMode(Mode mode);
     }
 

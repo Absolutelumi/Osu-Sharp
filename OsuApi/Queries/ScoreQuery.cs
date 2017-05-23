@@ -55,9 +55,9 @@ namespace OsuApi.Queries
             }
             return scores;
         }
-
         public IScoreQuery WithMode(Mode mode)
         {
+
             Parameters["m"] = $"{(int)mode}";
             return this;
         }
