@@ -70,6 +70,7 @@ namespace OsuApi.Model
 
     public enum Rank
     {
+        F,
         D,
         C,
         B,
