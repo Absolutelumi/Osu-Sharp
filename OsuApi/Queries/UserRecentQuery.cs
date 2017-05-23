@@ -30,8 +30,15 @@ namespace OsuApi.Queries
             if (limit < 1 || limit > 50)
                 throw new ArgumentOutOfRangeException("Limit must be greater than 1 or equal to or less than 50");
             var jsonResponse = await GetJsonResponse("get_user_recent");
-            Parameters["limit"] = $"{limit}"; 
-            return jsonResponse.Deserialize<Score[]>();
+            Parameters["limit"] = $"{limit}";
+            var scores = jsonResponse.Deserialize<Score[]>();
+            foreach (Score score in scores)
+            {
+                var user = await new UserQuery(Parameters["k"]).WithUser(Parameters["u"]).Result();
+                score.username = user.username;
+                score.user_id = user.user_id;
+            }
+            return scores;
         }
 
         public IUserRecentQuery WithMode(Mode mode)
