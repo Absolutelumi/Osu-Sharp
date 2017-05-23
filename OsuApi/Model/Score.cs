@@ -6,6 +6,7 @@ namespace OsuApi.Model
     [DataContract]
     public class Score
     {
+        public double Accuracy => CalculateAccuracy();
         public int Combo => maxcombo;
         public DateTime Date => DateTime.Parse(date);
         public bool FullCombo => perfect == 1;
@@ -22,6 +23,13 @@ namespace OsuApi.Model
         public string UserId => user_id;
         public string Username => username;
         public string BeatmapId => beatmap_id;
+
+        private double CalculateAccuracy()
+        {
+            int totalPossibleScore = 300 * (count300 + count100 + count50 + countmiss);
+            int acquiredScore = 300 * count300 + 100 * count100 + 50 * count50;
+            return (double)acquiredScore / totalPossibleScore;
+        }
 
         #region Json Fields
 
