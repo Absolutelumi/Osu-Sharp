@@ -78,7 +78,8 @@ namespace OsuApi.Model
         S,
         SH,
         SS,
-        SX
+        SX,
+        XH
     }
 
     public enum Status

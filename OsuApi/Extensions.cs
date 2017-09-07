@@ -18,9 +18,9 @@ namespace OsuApi
 
         public static int ToInt(this Mods mods)
         {
-            if (mods.HasFlag(Mods.Nightcore))
+            if (mods.HasFlag(Mods.NC))
             {
-                mods |= Mods.DoubleTime;
+                mods |= Mods.DT;
             }
             return (int)mods;
         }
@@ -28,9 +28,9 @@ namespace OsuApi
         public static Mods ToMods(this int number)
         {
             Mods result = (Mods)number;
-            if (result.HasFlag(Mods.Nightcore))
+            if (result.HasFlag(Mods.NC))
             {
-                result ^= Mods.DoubleTime;
+                result ^= Mods.DT;
             }
             return result;
         }
